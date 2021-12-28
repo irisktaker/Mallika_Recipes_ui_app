@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mallika_ui/components/const_colors.dart';
 
+import 'search/search_screen.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -10,7 +12,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: kLightGreyColor,
       body: SafeArea(
-        child:ListView(
+        minimum: const EdgeInsets.only(
+          top: 27,
+          // bottom: 27,
+        ),
+        child: ListView(
           children: [
             Padding(
               padding: const EdgeInsets.all(18.0),
@@ -50,7 +56,7 @@ class HomePage extends StatelessWidget {
                       ),
                       const Spacer(),
                       IconButton(
-                        onPressed: (){},
+                        onPressed: () {},
                         icon: const Icon(Icons.notifications_none, size: 30),
                       ),
                     ],
@@ -91,11 +97,14 @@ class HomePage extends StatelessWidget {
                     ),
                     child: Stack(
                       children: [
-                        Image.asset(
-                          'assets/images/img.png',
-                          height: 288,
-                          width: size.width,
-                          fit: BoxFit.cover,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(
+                            'assets/images/img.png',
+                            height: 288,
+                            width: size.width,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                         Positioned(
                           bottom: 0,
@@ -111,7 +120,8 @@ class HomePage extends StatelessWidget {
                                 color: kWhiteColor,
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Container(
                                     width: 50,
@@ -124,7 +134,8 @@ class HomePage extends StatelessWidget {
                                       ),
                                       shape: BoxShape.circle,
                                     ),
-                                    child: Image.asset('assets/icons/chef_hat.png'),
+                                    child: Image.asset(
+                                        'assets/icons/chef_hat.png'),
                                   ),
                                   const Text(
                                     'Buku resep spesial \nantara',
@@ -146,9 +157,11 @@ class HomePage extends StatelessWidget {
                                   ),
                                   Container(
                                     height: 30,
-                                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 40),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
                                       children: [
                                         const Text(
                                           '1,3K',
@@ -247,46 +260,442 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 50),
-                  const Text(
-                    'Featured Community Recipes',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Recoleta',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 24,
+                  Column(
+                    children: [
+                      const Text(
+                        'Featured Community Recipes',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Recoleta',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 24,
+                        ),
+                      ),
+                      const Text(
+                        'Get lots of recipe inspiration from the\ncommunity',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: kGreyColor,
+                        ),
+                      ),
+                      const SizedBox(height: 32),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset('assets/images/img_4.png'),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Resep Ayam Kuah Santan Pedas Lezat',
+                            style: TextStyle(
+                              fontFamily: 'Recoleta',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const CircleAvatar(
+                                backgroundImage: AssetImage(
+                                    'assets/images/profil_photo2.png'),
+                                radius: 25,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Nadia Putri',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.favorite,
+                                        color: kOrangeColor,
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '130',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '.',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '103 Reviews',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(width: 20),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.favorite_border_outlined,
+                                  color: kOrangeColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset('assets/images/img_5.png'),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Resep Kare Ayam Kuah Pedas',
+                            style: TextStyle(
+                              fontFamily: 'Recoleta',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const CircleAvatar(
+                                backgroundImage: AssetImage(
+                                    'assets/images/profil_photo3.png'),
+                                radius: 25,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Gayuh Tri Pinjungwati',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.favorite,
+                                        color: kOrangeColor,
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '130',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '.',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '103 Reviews',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(width: 20),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.favorite_border_outlined,
+                                  color: kOrangeColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset('assets/images/img_6.png'),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Resep Garang Asem Ayam Kampung',
+                            style: TextStyle(
+                              fontFamily: 'Recoleta',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const CircleAvatar(
+                                backgroundImage: AssetImage(
+                                    'assets/images/profil_photo3.png'),
+                                radius: 25,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    'Gayuh Tri Pinjungwati',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.favorite,
+                                        color: kOrangeColor,
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '130',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '.',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text(
+                                        '103 Reviews',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16,
+                                          color: kDarkGreyColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(width: 20),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.favorite_border_outlined,
+                                  color: kOrangeColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 48),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Show All Recipe by Community',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: kOrangeColor,
+                      ),
                     ),
                   ),
-                  const Text(
-                    'Get lots of recipe inspiration from the\ncommunity',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: kGreyColor,
+                  const SizedBox(height: 43),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Category',
+                      style: TextStyle(
+                        fontFamily: 'Recoleta',
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset('assets/images/img_4.png'),
-                        const SizedBox(height: 16),
-                        const Text(
-                          'Resep Ayam Kuah Santan Pedas Lezat',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'Recoleta',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 24,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/img_7.png',
+                            width: 74,
+                            height: 74,
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                      ],
-                    ),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Seasonal',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 16),
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/img_8.png',
+                            width: 74,
+                            height: 74,
+                          ),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Cakes',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 16),
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/img_9.png',
+                            width: 74,
+                            height: 74,
+                          ),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Everyday',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 16),
+                      Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/img_10.png',
+                            width: 74,
+                            height: 74,
+                          ),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Drinks',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  
+                  const SizedBox(height: 16),
                 ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: kOrangeColor,
+        child: const Icon(
+          Icons.add,
+          color: kWhiteColor,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: Container(
+        height: 55,
+        color: kWhiteColor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.home_outlined,
+                size: 30,
+                color: kOrangeColor,
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(
+                Icons.search,
+                size: 30,
+              ),
+            ),
+            const SizedBox(width: 20),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.shopping_cart_outlined,
+                size: 30,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.calendar_today_outlined,
+                size: 30,
               ),
             ),
           ],
